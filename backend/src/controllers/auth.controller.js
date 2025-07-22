@@ -144,5 +144,17 @@ export const logout = async(req,res)=>{
 }
  
 export const check = async(req,res)=>{
-    
+    try {
+        res.status(200).json({
+            success : true,
+            message : "User authenticated Successfully",
+            user : req.user
+        });
+    } catch (error) {
+        console.error("Error checking out user",error);
+        res.status(500).json({
+            error : "Error checking out user",
+            success : false
+        })
+    }
 }
